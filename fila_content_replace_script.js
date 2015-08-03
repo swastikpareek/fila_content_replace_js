@@ -1,4 +1,3 @@
-console.log('dont fuck with me');
 var CONTENTREPLACE = CONTENTREPLACE || (function() {
   var _args = {}; // private
 
