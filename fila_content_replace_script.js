@@ -52,6 +52,9 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
     executeAjaxCall: function() {
       $(document).ready(function() {
         var allContentLoaded = false;
+        $(_args[1]).empty();
+        $(_args[1]).addClass('CORScontentIsLoading');
+        $(_args[1]).append('<div class="CORScontentLoaderDiv">Loading Your Content Please wait...</div>');
 
         function Exception(type, message) {
           this.message = message;
@@ -67,7 +70,6 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             $obj = $(data);
             $obj.each(function(key, item) {
               if (item.className === 'mainContentRegion') {
-                $(_args[1]).empty();
                 $(_args[1]).append(item);
               }
               if (item.nodeName === 'SCRIPT') {
