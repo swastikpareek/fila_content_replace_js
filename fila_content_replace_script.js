@@ -11,7 +11,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
         var allContentLoaded = false;
         $(_args[1]).empty();
         $(_args[1]).addClass('CORScontentIsLoading');
-        $(_args[1]).find('mainContentRegion').append('<div class="CORScontentLoaderDiv">Loading Your Content Please wait...</div>');
+        $(_args[1]).append('<div class="CORScontentLoaderDiv">Loading Your Content Please wait...</div>');
 
         function Exception(type, message) {
           this.message = message;
