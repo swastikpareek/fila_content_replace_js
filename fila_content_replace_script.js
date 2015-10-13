@@ -25,6 +25,9 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             data = data.replace(/\n/g, "");
             $obj = $(data);
             $obj.each(function(key, item) {
+              if (item.nodeName === 'BASE') {
+                $('head').append(item);
+              }
               if (item.className === 'mainContentRegion') {
                 $(_args[1]).append(item);
               }
