@@ -1,3 +1,5 @@
+var swastik;
+var filesExecuted = false;
 var CONTENTREPLACE = CONTENTREPLACE || (function() {
   var _args = {}; // private
 
@@ -24,38 +26,38 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
           success: function(data) {
             data = data.replace(/\n/g, "");
             $obj = $(data);
+            var scriptsArray = [];
+            var stylesArray = [];
             $obj.each(function(key, item) {
               if (item.nodeName === 'BASE') {
                 $('head').append(item);
               }
-              if (item.className === 'mainContentRegion') {
-                $(_args[1]).append(item);
-              }
               if (item.nodeName === 'SCRIPT') {
-                $('body').append(item);
+                scriptsArray.push(item);
               }
               if (item.nodeName === 'STYLE') {
                 $('head').append(item);
               }
-              if ($obj.length === (key + 1)) {
-                allContentLoaded = true;
+            });
+            scriptsArray.forEach(function(d, i) {
+              if (d.getAttribute('src') === null) {
+                if (d.innerHTML.indexOf('Drupal.settings') > -1) {
+                  var drupalSettingsJSON = d.innerHTML.substring(d.innerHTML.indexOf('jQuery.extend(Drupal.settings,'), d.innerHTML.indexOf('//--><!]]>'));
+                  swastik = drupalSettingsJSON;
+                }
+              }
+              scriptsArray.forEach(function(d, i) {
+                if (d.getAttribute('src') !== null) {
+
+                  $(body).append(d);
+                }
+              });
+            });
+            $obj.each(function(key, item) {
+              if (item.className === 'mainContentRegion') {
+                $(_args[1]).append(item);
               }
             });
-
-            var checkContent = setInterval(function() {
-              try {
-                if (Drupal === undefined || Drupal.behaviors.homePageSettings === undefined) {
-                  throw new Exception('contentUndefined', 'Drupal is not Defined');
-                } else {
-                  if (allContentLoaded) {
-                    Drupal.behaviors.homePageSettings.attach(true);
-                    clearInterval(checkContent);
-                  }
-                }
-              } catch (e) {
-                // console.log(e);
-              }
-            }, 100);
           },
           error: function(xhr, status) {
             alert("Sorry, there was a problem!");
