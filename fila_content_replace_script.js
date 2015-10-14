@@ -58,8 +58,10 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
               }
             });
             scriptsArray.forEach(function(d, i) {
-              if (d.getAttribute('src').indexOf('custom.js') > -1) {
-                $(body).append(d);
+              if (d.getAttribute('src') === null) {
+                if (d.getAttribute('src').indexOf('custom.js') > -1) {
+                  $(body).append(d);
+                }
               }
             });
           },
