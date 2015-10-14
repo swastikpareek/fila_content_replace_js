@@ -39,6 +39,11 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                 $('head').append(item);
               }
             });
+            $obj.each(function(key, item) {
+              if (item.className === 'mainContentRegion') {
+                $(_args[1]).append(item);
+              }
+            });
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') === null) {
                 if (d.innerHTML.indexOf('Drupal.settings') > -1) {
@@ -46,16 +51,15 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                   swastik = drupalSettingsJSON;
                 }
               }
-              scriptsArray.forEach(function(d, i) {
-                if (d.getAttribute('src') !== null) {
-
-                  $(body).append(d);
-                }
-              });
             });
-            $obj.each(function(key, item) {
-              if (item.className === 'mainContentRegion') {
-                $(_args[1]).append(item);
+            scriptsArray.forEach(function(d, i) {
+              if (d.getAttribute('src') !== null && d.getAttribute('src').indexOf('custom.js') === -1) {
+                $(body).append(d);
+              }
+            });
+            scriptsArray.forEach(function(d, i) {
+              if (d.getAttribute('src').indexOf('custom.js') > -1) {
+                $(body).append(d);
               }
             });
           },
