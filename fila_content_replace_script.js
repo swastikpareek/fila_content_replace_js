@@ -9,39 +9,39 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
       // some other initialising
     },
     executeAjaxCall: function() {
-      $(document).ready(function() {
+      jQuery(document).ready(function() {
         var allContentLoaded = false;
-        $(_args[1]).empty();
-        $(_args[1]).addClass('CORScontentIsLoading');
-        $(_args[1]).append('<div class="CORScontentLoaderDiv">Loading Your Content Please wait...</div>');
+        jQuery(_args[1]).empty();
+        jQuery(_args[1]).addClass('CORScontentIsLoading');
+        jQuery(_args[1]).append('<div class="CORScontentLoaderDiv">Loading Your Content Please wait...</div>');
 
         function Exception(type, message) {
           this.message = message;
           this.name = type;
         }
-        $.ajax({
+        jQuery.ajax({
           url: _args[0],
           type: "GET",
           dataType: "html",
           success: function(data) {
             data = data.replace(/\n/g, "");
-            $obj = $(data);
+            jQueryobj = jQuery(data);
             var scriptsArray = [];
             var stylesArray = [];
-            $obj.each(function(key, item) {
+            jQueryobj.each(function(key, item) {
               if (item.nodeName === 'BASE') {
-                $('head').append(item);
+                jQuery('head').append(item);
               }
               if (item.nodeName === 'SCRIPT') {
                 scriptsArray.push(item);
               }
               if (item.nodeName === 'STYLE') {
-                $('head').append(item);
+                jQuery('head').append(item);
               }
             });
-            $obj.each(function(key, item) {
+            jQueryobj.each(function(key, item) {
               if (item.className === 'mainContentRegion') {
-                $(_args[1]).append(item);
+                jQuery(_args[1]).append(item);
               }
             });
             scriptsArray.forEach(function(d, i) {
@@ -54,13 +54,13 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             });
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null && d.getAttribute('src').indexOf('custom.js') === -1) {
-                $(body).append(d);
+                jQuery(body).append(d);
               }
             });
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('custom.js') > -1) {
-                  $(body).append(d);
+                  jQuery(body).append(d);
                 }
               }
             });
