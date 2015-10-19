@@ -54,16 +54,16 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             });
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null && d.getAttribute('src').indexOf('custom.js') === -1) {
-                jQuery(body).append(d);
+                jQuery('body').append(d);
               }
             });
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('custom.js') > -1) {
-                  jQuery(body).append(d);
+                  jQuery('body').append(d);
                 }
                 if (d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') > -1) {
-                  jQuery(body).append(d);
+                  jQuery('body').append(d);
                 }
               }
             });
