@@ -62,6 +62,9 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                 if (d.getAttribute('src').indexOf('custom.js') > -1) {
                   jQuery(body).append(d);
                 }
+                if (d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') > -1) {
+                  jQuery(body).append(d);
+                }
               }
             });
           },
