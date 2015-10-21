@@ -62,7 +62,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
               if (d.getAttribute('src') !== null && (d.getAttribute('src').indexOf('custom.js') === -1 && d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') === -1)) {
 
                 // console.log('check' + d.getAttribute('src').indexOf('jquery.min.js'));
-                d.setAttribute('async', true);
+                d.setAttribute('defer', true);
                 jQuery('body').append(d);
               }
             });
