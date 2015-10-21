@@ -31,19 +31,24 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             jQueryobj.each(function(key, item) {
               if (item.nodeName === 'BASE') {
                 jQuery('head').append(item);
+                // Appending the base tag on head tag
               }
               if (item.nodeName === 'SCRIPT') {
                 scriptsArray.push(item);
+                //Collecting all the script tags
               }
               if (item.nodeName === 'STYLE') {
                 jQuery('head').append(item);
+                //Appending all the styles tag
               }
             });
             jQueryobj.each(function(key, item) {
               if (item.className === 'mainContentRegion') {
                 jQuery(_args[1]).append(item);
+                //Appending the HTML
               }
             });
+            //First of adding Drupal.settings to an array
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') === null) {
                 if (d.innerHTML.indexOf('Drupal.settings') > -1) {
@@ -52,16 +57,23 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                 }
               }
             });
+            //After that adding all scripts other than custom.js and contentreplace.js
             scriptsArray.forEach(function(d, i) {
-              if (d.getAttribute('src') !== null && d.getAttribute('src').indexOf('custom.js') === -1) {
+              if (d.getAttribute('src') !== null && (d.getAttribute('src').indexOf('custom.js') === -1 || d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') === -1)) {
                 jQuery('body').append(d);
               }
             });
+            //Adding custom.js file
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('custom.js') > -1) {
                   jQuery('body').append(d);
                 }
+              }
+            });
+            // ADding contentReplaceScriptAddon.js lastly to ensure delayed execution
+            scriptsArray.forEach(function(d, i) {
+              if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') > -1) {
                   jQuery('body').append(d);
                 }
@@ -69,10 +81,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             });
           },
           error: function(xhr, status) {
-            alert("Sorry, there was a problem!");
-          },
-          complete: function(xhr, status) {
-            // console.log('hello');
+            console.log("Sorry, there was a problem! Status " + status);
           }
         });
       });
