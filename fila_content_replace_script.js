@@ -60,6 +60,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             //After that adding all scripts other than custom.js and contentreplace.js
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null && (d.getAttribute('src').indexOf('custom.js') === -1 || d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') === -1 || d.getAttribute('src').indexOf('jquery.min.js') === -1)) {
+                console.log('hi' + d.getAttribute('src').indexOf('jquery.min.js'));
                 jQuery('body').append(d);
               }
             });
