@@ -68,6 +68,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('custom.js') > -1) {
+                  d.setAttribute('defer', true);
                   jQuery('body').append(d);
                 }
               }
@@ -76,6 +77,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             scriptsArray.forEach(function(d, i) {
               if (d.getAttribute('src') !== null) {
                 if (d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') > -1) {
+                  d.setAttribute('defer', true);
                   jQuery('body').append(d);
                 }
               }
