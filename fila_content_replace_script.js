@@ -89,11 +89,10 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
 
             function getScripts(i) {
               if (scriptsArray[i] !== undefined) {
+                //Only getting local scripts
                 if (scriptsArray[i].getAttribute('src') !== null && scriptsArray[i].getAttribute('src').indexOf('http://') === -1) {
                   var req_arr = url + scriptsArray[i].getAttribute('src');
-                  console.log(req_arr);
                   jQuery.getScript(req_arr, function() {
-                    // console.log(scriptsArray[i].getAttribute('src'));
                     getScripts(i + 1);
                   });
                 } else {
