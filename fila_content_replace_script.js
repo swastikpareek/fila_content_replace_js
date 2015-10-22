@@ -85,7 +85,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             //     }
             //   }
             // });
-            var url = 'http://localhost/fila-demo/na/';
+            var url = jQuery('base').attr('href');
 
             function getScripts(i) {
               if (scriptsArray[i] !== undefined) {
