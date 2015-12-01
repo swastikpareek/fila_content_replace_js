@@ -9,7 +9,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
       // some other initialising
     },
     executeAjaxCall: function() {
-      jQuery(window).load(function() {
+      // jQuery(window).load(function() {
         var allContentLoaded = false;
         jQuery(_args[1]).empty();
         jQuery(_args[1]).addClass('CORScontentIsLoading');
@@ -80,7 +80,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             console.log("Sorry, there was a problem! Status " + status);
           }
         });
-      });
+      // });
     }
   };
 }());
