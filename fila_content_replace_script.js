@@ -9,7 +9,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
       // some other initialising
     },
     executeAjaxCall: function() {
-      jQuery(document).ready(function() {
+      // jQuery(document).ready(function() {
         var allContentLoaded = false;
         jQuery(_args[1]).empty();
         jQuery(_args[1]).addClass('CORScontentIsLoading');
@@ -59,32 +59,6 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
               }
             });
             //After that adding all scripts other than custom.js and contentreplace.js
-            // scriptsArray.forEach(function(d, i) {
-            //   if (d.getAttribute('src') !== null && (d.getAttribute('src').indexOf('custom.js') === -1 && d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') === -1)) {
-
-            //     // console.log('check' + d.getAttribute('src').indexOf('jquery.min.js'));
-            //     d.setAttribute('async', true);
-            //     jQuery('body').append(d);
-            //   }
-            // });
-            // //Adding custom.js file
-            // scriptsArray.forEach(function(d, i) {
-            //   if (d.getAttribute('src') !== null) {
-            //     if (d.getAttribute('src').indexOf('custom.js') > -1) {
-            //       d.setAttribute('defer', true);
-            //       jQuery('body').append(d);
-            //     }
-            //   }
-            // });
-            // // ADding contentReplaceScriptAddon.js lastly to ensure delayed execution
-            // scriptsArray.forEach(function(d, i) {
-            //   if (d.getAttribute('src') !== null) {
-            //     if (d.getAttribute('src').indexOf('contentReplaceScriptAddon.js') > -1) {
-            //       d.setAttribute('defer', true);
-            //       jQuery('body').append(d);
-            //     }
-            //   }
-            // });
             var url = jQuery('base').attr('href');
 
             function getScripts(i) {
@@ -106,7 +80,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
             console.log("Sorry, there was a problem! Status " + status);
           }
         });
-      });
+      // });
     }
   };
 }());
