@@ -1,0 +1,16 @@
+.CORScontentIsLoading{
+  position: relative;
+}
+.CORScontentIsLoading .mainContentRegion{
+  opacity: 0;
+}
+.CORScontentLoaderDiv{
+  position: absolute;
+  top: 40px;
+  text-align: center;
+  left: 0;
+  width: 100%;
+  font-family: "Helvetica" , Arial , Sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}

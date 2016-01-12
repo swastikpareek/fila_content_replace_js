@@ -9,7 +9,7 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
       // some other initialising
     },
     executeAjaxCall: function() {
-      jQuery(window).load(function() {
+      jQuery(document).ready(function() {
         var allContentLoaded = false;
         jQuery(_args[1]).empty();
         jQuery(_args[1]).addClass('CORScontentIsLoading');
