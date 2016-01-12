@@ -73,6 +73,9 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                   getScripts(i + 1);
                 }
               }
+              else{
+                eval(Drupal.attachBehaviors());
+              }
             }
             getScripts(0);
           },
