@@ -73,6 +73,11 @@ var CONTENTREPLACE = CONTENTREPLACE || (function() {
                   getScripts(i + 1);
                 }
               }
+              else{
+                if(jQuery(_args[1]).hasClass('CORScontentIsLoading')){
+                  eval(Drupal.attachBehaviors(document, Drupal.settings));
+                }
+              }
             }
             getScripts(0);
           },
